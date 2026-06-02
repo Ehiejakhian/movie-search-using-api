@@ -1,0 +1,72 @@
+@use '../util/' as *;
+
+header {
+  position: relative;
+  border-bottom: 1px solid var(--text);
+  padding: 5px 10px;
+  @include df(space-between, center);
+  .logo {
+    @include df(space-between, center, row, 10px);
+    img {
+      width: 50px;
+      @include df;
+    }
+  }
+
+  .form-container {
+    @include df;
+    .search-bar {
+      border: 1px solid var(--text);
+      border-radius: 20px;
+      overflow: hidden;
+      @include df;
+      input {
+        font: inherit;
+        padding: 5px 10px;
+        border: none;
+        outline: none;
+        font-weight: 600;
+      }
+      button {
+        @include btn(var(--bg), var(--bg), var(--bg), var(--acc-300));
+        & {
+          border-radius: 0;
+          border: none;
+          background: var(--acc);
+          color: var(--bg);
+        }
+      }
+    }
+    @media (max-width: 500px) {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 100%;
+      transform: translateY(100%);
+      padding: 10px;
+      background: var(--bg);
+      border-top: 1px solid var(--text);
+      border-bottom: 1px solid var(--text);
+      
+      .search-bar {
+        width: 100%;
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  > ul {
+    @include df(right, center, row, 10px);
+    a {
+      @include btn;
+      &.active {
+        background: var(--acc);
+        color: var(--bg);
+      }
+    }
+  }
+}

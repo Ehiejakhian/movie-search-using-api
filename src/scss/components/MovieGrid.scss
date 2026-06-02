@@ -1,0 +1,5 @@
+@use '../util/' as *;
+
+.movie-grid {
+  @include dg(auto-fit, 200px, 1fr, 1rem);
+}

@@ -1,0 +1,54 @@
+@use './vars' as *;
+
+@mixin df($j:normal, $a:normal, $fl:row, $g:0) {
+  display: flex;
+  justify-content: $j;
+  align-items: $a;
+  flex-flow: $fl;
+  gap: $g;
+}
+
+@mixin btn($c:var(--text), $bg:transparent, $h_c:var(--text),$h_bg:var(--bg)) {
+  color: $c;
+  background: $bg;
+  padding: 5px 10px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'outfit';
+  text-decoration: none;
+  border: 1px solid;
+  border-radius: 50px;
+  transition: all .3s;
+  @include df(center, center, row, 10px);
+  &:hover {
+    color: $h_c;
+    background: $h_bg;
+  }
+}
+
+@mixin after-line($c: var(--text), $w: 70px, $h: 3px) {
+  position: relative;
+  &::after {
+    content: '';
+    width: $w;
+    height: $h;
+    background: $c;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(10px);
+  }
+}
+
+@mixin gradient-text($from:#00DBDE, $to:#FC00FF) {
+  background-image: linear-gradient(90deg, $from, $to);
+  background-clip: text;
+  color: transparent;
+}
+
+@mixin dg($numCols:1, $min-width:250px, $max-width:1fr, $gap:0) {
+  display: grid;
+  grid-template-columns: repeat($numCols, minmax($min-width, $max-width));
+  gap: $gap;
+}
