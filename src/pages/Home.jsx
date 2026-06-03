@@ -3,6 +3,7 @@ import "../scss/pages/Home.scss";
 import "../scss/components/MovieGrid.scss";
 import { getMovies } from "../services/api.js";
 import { useState, useEffect } from "react";
+import {Helmet} from "react-helmet-async";
 
 
 export default function Home() {
@@ -42,18 +43,24 @@ export default function Home() {
   }
 
   return (
-    <div className="home-page">
-      <div className="movie-grid">
-        {error && <div className="error">{error}</div>}
-        
-        {loading ? (
-          <div className="loading">Loading movies...</div>
-        ) : (
-          movies?.map(movie => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))
-        )}
+    <>
+      <Helmet>
+        <title>Home - Movie App</title>
+      </Helmet>
+
+      <div className="home-page">
+        <div className="movie-grid">
+          {error && <div className="error">{error}</div>}
+          
+          {loading ? (
+            <div className="loading">Loading movies...</div>
+          ) : (
+            movies?.map(movie => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
