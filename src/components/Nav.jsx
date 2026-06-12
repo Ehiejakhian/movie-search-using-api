@@ -1,12 +1,20 @@
 import { NavLink } from "react-router-dom";
 import '../scss/components/Navbar.scss';
 import { useState } from "react";
+import { useContext } from "react";
+import { MovieContext } from "../context/MovieContext.jsx";
 
 export default function NavBar() {
   const [searchValue, setSearchValue] = useState('');
+  const {query, setQuery} = useContext(MovieContext);
+
   const submitSearch = (e) => {
     e.preventDefault();
-    console.log(searchValue);
+    setQuery(e.target.value);
+  }
+  const handleSearch = (e) => {
+    setSearchValue(e.target.value);
+    setQuery(e.target.value);
   }
 
   return <header>
@@ -19,7 +27,7 @@ export default function NavBar() {
     </div>
     <div className="form-container">
       <form className="search-bar" onSubmit={e => submitSearch(e)}>
-        <input type="search" name="search" id="search" value={searchValue} placeholder="Search movie..." onChange={e => setSearchValue(e.target.value)}/>
+        <input type="search" name="search" id="search" value={searchValue} placeholder="Search movie..." onChange={handleSearch}/>
         <button type="submit">Search</button>
       </form>
     </div>

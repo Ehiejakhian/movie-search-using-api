@@ -1,0 +1,9 @@
+@use '../util/' as *;
+
+.favourites {
+  padding: 30px 10px 100px 10px;
+  @include df(normal, normal, column);
+  @media (max-width: $mini-tab) {
+    padding-top: 100px;
+  }
+}

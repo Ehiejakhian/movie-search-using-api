@@ -4,6 +4,7 @@ header {
   position: relative;
   border-bottom: 1px solid var(--text);
   padding: 5px 10px;
+  background: beige;
   @include df(space-between, center);
   .logo {
     @include df(space-between, center, row, 10px);

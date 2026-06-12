@@ -15,8 +15,6 @@
       position: absolute;
       top: 0;
       right: 0;
-      bottom: 0;
-      left: 0;
       background: transparent;
       border: none;
       cursor: pointer;
@@ -58,10 +56,13 @@
     >p {
       padding: 0 10px;
       display: -webkit-box;
-      line-clamp: 4;
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      @media (min-width: 500px) {
+        line-clamp: 4;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
     }
     .release-date {
       padding: 10px;
